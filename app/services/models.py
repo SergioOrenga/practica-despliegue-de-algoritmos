@@ -37,7 +37,7 @@ class TrollDetectionModel:
         self.tokenizer = pickle.load(tf.io.gfile.GFile(tokenizer_path, mode="rb"))
 
     def _decode_label(self, score):
-        return Troll.NO_TROLL if score < 0.5 else Troll.TROLL
+        return Troll.NEGATIVE_TROLL if score < 0.5 else Troll.POSITIVE_TROLL
 
     def _pre_process(self, payload: TextPayload) -> str:
         logger.debug("Pre-processing payload.")
